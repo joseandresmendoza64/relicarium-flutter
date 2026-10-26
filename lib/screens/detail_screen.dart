@@ -24,13 +24,14 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
-              child: Icon(
-                Icons.auto_awesome,
-                color: Colors.amber,
-                size: 100,
-              ),
-            ),
+            Center(
+  child: Image.asset(
+    'assets/images/${producto.imagen}.png',
+    width: 220,
+    height: 180,
+    fit: BoxFit.contain,
+  ),
+),
             const SizedBox(height: 30),
             Text(
               producto.nombre,
@@ -57,7 +58,7 @@ class DetailScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Spacer(),
+            const SizedBox(height: 40),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton.icon(
