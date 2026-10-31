@@ -12,7 +12,7 @@ class RelicariumApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Relicarium',
+      title: 'Relicarium II',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,

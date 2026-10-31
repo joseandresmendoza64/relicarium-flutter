@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: const Color(0xFF252536),
         title: const Text(
-          'RELICARIUM',
+          'RELICARIUM II',
           style: TextStyle(
             color: Color(0xFF7DD3FC),
             fontWeight: FontWeight.bold,
