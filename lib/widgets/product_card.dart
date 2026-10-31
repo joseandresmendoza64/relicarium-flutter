@@ -49,7 +49,7 @@ class ProductCard extends StatelessWidget {
               '\$${producto.precio} USD',
               style: const TextStyle(
                 color: Color(0xFF7DD3FC),
-                fontSize: 12,
+                fontSize: 16,
               ),
             ),
             const SizedBox(height: 8),
