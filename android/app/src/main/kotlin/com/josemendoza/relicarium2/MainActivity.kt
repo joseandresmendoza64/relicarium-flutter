@@ -1,4 +1,4 @@
-package com.example.tech_catalog
+package com.josemendoza.relicarium2
 
 import io.flutter.embedding.android.FlutterActivity
 
