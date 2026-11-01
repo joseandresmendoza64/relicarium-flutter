@@ -1,14 +1,16 @@
-
 import 'package:flutter/material.dart';
+
 import '../models/product.dart';
+
+import 'package:provider/provider.dart';
+
+import '../providers/photo_provider.dart';
+import '../widgets/photo_section.dart';
 
 class DetailScreen extends StatelessWidget {
   final Product producto;
 
-  const DetailScreen({
-    super.key,
-    required this.producto,
-  });
+  const DetailScreen({super.key, required this.producto});
 
   @override
   Widget build(BuildContext context) {
@@ -18,57 +20,56 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF252536),
         foregroundColor: const Color(0xFF7DD3FC),
         centerTitle: true,
-title: const Text(
-  'Detalle de Reliquia',
-  style: TextStyle(
-    color: Color(0xFF7DD3FC),
-    fontSize: 26,
-    fontWeight: FontWeight.bold,
-  ),
-),
-       
+        title: const Text(
+          'Detalle de Reliquia',
+          style: TextStyle(
+            color: Color(0xFF7DD3FC),
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           ClipRRect(
-  borderRadius: BorderRadius.circular(16),
-  child: AspectRatio(
-    aspectRatio: 1,
-    child: Image.asset(
-      'assets/images/${producto.imagen}.png',
-      width: double.infinity,
-      fit: BoxFit.cover,
-    ),
-  ),
-),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Image.asset(
+                  'assets/images/${producto.imagen}.png',
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             const SizedBox(height: 20),
             Row(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  children: [
-    Expanded(
-      child: Text(
-        producto.nombre,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    ),
-    const SizedBox(width: 12),
-    Text(
-      '\$ ${producto.precio}',
-      style: const TextStyle(
-        color: Color(0xFF7DD3FC),
-        fontSize: 32,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-  ],
-),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Text(
+                    producto.nombre,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Text(
+                  '\$ ${producto.precio}',
+                  style: const TextStyle(
+                    color: Color(0xFF7DD3FC),
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
 
             const SizedBox(height: 16),
             Text(
@@ -77,13 +78,17 @@ title: const Text(
                 color: Colors.white70,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-
               ),
             ),
-          
+            const SizedBox(height: 24),
+            ChangeNotifierProvider(
+              create: (_) => PhotoProvider(producto.imagen),
+              child: const PhotoSection(),
+            ),
+            const SizedBox(height: 24),
             const SizedBox(height: 40),
             Center(
-                child: ElevatedButton.icon(
+              child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.pop(context);
                 },
