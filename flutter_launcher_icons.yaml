@@ -1,0 +1,7 @@
+flutter_launcher_icons:
+  android: true
+  ios: false
+  image_path: "assets/branding/relicarium_icon.png"
+  adaptive_icon_background: "#03060B"
+  adaptive_icon_foreground: "assets/branding/relicarium_icon.png"
+  adaptive_icon_foreground_inset: 20
