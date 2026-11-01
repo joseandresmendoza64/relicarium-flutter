@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
       imagen: 'teseracto',
     ),
     Product(
-      nombre: 'Mecanismo de Anticitera',
+      nombre: 'Anticitera',
       descripcion: 'Dispositivo ancestral de astronomía.',
       precio: 8900,
       imagen: 'anticitera',
@@ -68,6 +68,7 @@ class HomeScreen extends StatelessWidget {
           style: TextStyle(
             color: Color(0xFF7DD3FC),
             fontWeight: FontWeight.bold,
+            fontSize: 40,
           ),
         ),
         centerTitle: true,
@@ -78,7 +79,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text(
-              'El mercado de lo imposible',
+              'Mercado de lo imposible',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                 color: Colors.white,
@@ -88,12 +89,13 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 14),
             const Center(
-            child: Text('❦ ────────── ✦ ────────── ❦',
+            child: Text('❦ ─────────── ✦ ─────────── ❦',
            style: TextStyle(color: Color(0xFF7DD3FC), fontSize: 18)),
             ),
             const Text(
-              'Explora artefactos legendarios',
-              style: TextStyle(color: Colors.white70),
+              'Artefactos legendarios, toca para conocer más detalles',
+              style: TextStyle(color: Color.fromARGB(255, 101, 202, 252), fontSize: 17),
+              
             ),
             const SizedBox(height: 20),
             Expanded(
@@ -103,7 +105,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
-                  childAspectRatio: 0.72,
+                  childAspectRatio: 0.60,
                 ),
                 itemCount: productos.length,
                 itemBuilder: (context, index) {

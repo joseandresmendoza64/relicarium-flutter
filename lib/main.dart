@@ -15,11 +15,23 @@ class RelicariumApp extends StatelessWidget {
       title: 'Relicarium II',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        useMaterial3: true,
-        brightness: Brightness.dark,
-        colorSchemeSeed: Colors.amber,
-        fontFamily: 'CormorantGaramond',
+      useMaterial3: true,
+      brightness: Brightness.dark,
+      colorSchemeSeed: const Color(0xFF7DD3FC),
+      scaffoldBackgroundColor: const Color(0xFF0B1220),
+      fontFamily: 'CormorantGaramond',
+      elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+      backgroundColor: const Color.fromARGB(255, 73, 165, 208),
+      foregroundColor: const Color(0xFF0B1220),
+      minimumSize: const Size(46, 26), 
+      textStyle: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.bold,
       ),
+    ),
+  ),
+),
       home: const HomeScreen(),
     );
   }

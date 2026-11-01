@@ -16,52 +16,74 @@ class DetailScreen extends StatelessWidget {
       backgroundColor: const Color(0xFF15151F),
       appBar: AppBar(
         backgroundColor: const Color(0xFF252536),
-        foregroundColor: Colors.amber,
-        title: const Text('Detalle de reliquia'),
+        foregroundColor: const Color(0xFF7DD3FC),
+        centerTitle: true,
+title: const Text(
+  'Detalle de Reliquia',
+  style: TextStyle(
+    color: Color(0xFF7DD3FC),
+    fontSize: 26,
+    fontWeight: FontWeight.bold,
+  ),
+),
+       
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-  child: Image.asset(
-    'assets/images/${producto.imagen}.png',
-    width: 220,
-    height: 180,
-    fit: BoxFit.contain,
+           ClipRRect(
+  borderRadius: BorderRadius.circular(16),
+  child: AspectRatio(
+    aspectRatio: 1,
+    child: Image.asset(
+      'assets/images/${producto.imagen}.png',
+      width: double.infinity,
+      fit: BoxFit.cover,
+    ),
   ),
 ),
-            const SizedBox(height: 30),
-            Text(
-              producto.nombre,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            const SizedBox(height: 20),
+            Row(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Expanded(
+      child: Text(
+        producto.nombre,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    ),
+    const SizedBox(width: 12),
+    Text(
+      '\$ ${producto.precio}',
+      style: const TextStyle(
+        color: Color(0xFF7DD3FC),
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ],
+),
+
             const SizedBox(height: 16),
             Text(
               producto.descripcion,
               style: const TextStyle(
                 color: Colors.white70,
-                fontSize: 17,
-              ),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              '\$${producto.precio} USD',
-              style: const TextStyle(
-                color: Colors.amber,
-                fontSize: 24,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
+
               ),
             ),
+          
             const SizedBox(height: 40),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton.icon(
+            Center(
+                child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.pop(context);
                 },

@@ -15,61 +15,60 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.zero,
-      color: const Color(0xFF252536),
+      clipBehavior: Clip.antiAlias,
+      color: const Color(0xFF0D1726),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(14),
+        side: const BorderSide(
+        color: Color(0xFF7DD3FC),
+        width: 0.8,
+     ),
+    
+    
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/images/${producto.imagen}.png',
-               width: 110,
-               height: 100,
-               fit: BoxFit.contain,
-            ),
 
-
-            const SizedBox(height: 8),
-            Text(
-              producto.nombre,
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 13,
-                fontWeight: FontWeight.bold,
+      child: InkWell(onTap: () {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => DetailScreen(
+        producto: producto,
+      ),
+    ),
+  );
+},
+        child: Padding(
+          padding: EdgeInsets.zero,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Expanded(
+          child: Image.asset(
+            'assets/images/${producto.imagen}.png',
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+        ),
+        
+        
+              const SizedBox(height: 8),
+              Text(
+                producto.nombre,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 21,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              '\$${producto.precio} USD',
-              style: const TextStyle(
-                color: Color(0xFF7DD3FC),
-                fontSize: 16,
-              ),
-            ),
-            const SizedBox(height: 8),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DetailScreen(
-                      producto: producto,
-                    ),
-                  ),
-                );
-              },
-              child: const Text(
-                'Ver reliquia',
-                style: TextStyle(fontSize: 11),
-              ),
-            ),
-          ],
+              const SizedBox(height: 6),
+           
+              const SizedBox(height: 6),
+             
+            ],
+          ),
         ),
       ),
     );
