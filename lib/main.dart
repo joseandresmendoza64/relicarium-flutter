@@ -4,11 +4,20 @@ import 'screens/home_screen.dart';
 import 'package:provider/provider.dart';
 import 'providers/connection_provider.dart';
 import 'services/connectivity_service.dart';
+import 'providers/catalog_provider.dart';
+import 'repositories/catalog_repository.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => ConnectionProvider(ConnectivityService()),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ConnectionProvider(ConnectivityService()),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CatalogProvider(CatalogRepository()),
+        ),
+      ],
       child: const RelicariumApp(),
     ),
   );
