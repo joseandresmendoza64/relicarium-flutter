@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../widgets/product_card.dart';
+import '../widgets/offline_banner.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,6 +13,24 @@ class HomeScreen extends StatelessWidget {
       descripcion: 'Cubo cósmico de energía extraordinaria.',
       precio: 12500,
       imagen: 'teseracto',
+    ),
+ Product(
+      nombre: 'Copa traslador',
+      descripcion: 'Objeto mágico capaz de transportar personas.',
+      precio: 6700,
+      imagen: 'copa',
+    ),
+     Product(
+      nombre: 'Espada Maestra',
+      descripcion: 'Espada legendaria perteneciente al héroe del tiempo.',
+      precio: 90000,
+      imagen: 'espada',
+    ),
+  Product(
+      nombre: 'Death Note',
+      descripcion: 'Cuaderno oscuro donde todo nombre escrito termina en muerte.',
+      precio: 10500,
+      imagen: 'cuaderno',
     ),
     Product(
       nombre: 'Anticitera',
@@ -25,30 +44,14 @@ class HomeScreen extends StatelessWidget {
       precio: 3200,
       imagen: 'escama',
     ),
-    Product(
-      nombre: 'Copa traslador',
-      descripcion: 'Objeto mágico capaz de transportar personas.',
-      precio: 6700,
-      imagen: 'copa',
-    ),
-    Product(
-      nombre: 'Espada Maestra',
-      descripcion: 'Espada legendaria perteneciente al héroe del tiempo.',
-      precio: 90000,
-      imagen: 'espada',
-    ),
+     
     Product(
       nombre: 'Esferas del Dragón',
       descripcion: 'Esferas místicas que invocan a Shenlong.',
       precio: 20500,
       imagen: 'esferas',
     ),
-    Product(
-      nombre: 'Death Note',
-      descripcion: 'Cuaderno oscuro donde todo nombre escrito termina en muerte.',
-      precio: 10500,
-      imagen: 'cuaderno',
-    ),
+  
     Product(
       nombre: 'Omnitrix',
       descripcion: 'Dispositivo alienígena de transformación.',
@@ -78,6 +81,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const OfflineBanner(),
             const Text(
               'Mercado de lo imposible',
                 textAlign: TextAlign.center,

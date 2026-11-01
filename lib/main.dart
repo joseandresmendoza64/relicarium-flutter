@@ -1,9 +1,17 @@
 
 import 'package:flutter/material.dart';
 import 'screens/home_screen.dart';
+import 'package:provider/provider.dart';
+import 'providers/connection_provider.dart';
+import 'services/connectivity_service.dart';
 
 void main() {
-  runApp(const RelicariumApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => ConnectionProvider(ConnectivityService()),
+      child: const RelicariumApp(),
+    ),
+  );
 }
 
 class RelicariumApp extends StatelessWidget {
