@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-
+import '../services/notification_service.dart';
 import '../services/photo_service.dart';
 import '../services/photo_storage_service.dart';
 
@@ -72,32 +72,40 @@ class PhotoProvider extends ChangeNotifier {
     }
   }
 
-  Future<void> savePhoto() async {
-    final path = _previewPath;
-    if (_busy || _disposed || path == null) return;
-    _busy = true;
-    _error = null;
-    notifyListeners();
+ Future<void> savePhoto() async {
+  final path = _previewPath;
+  if (_busy || _disposed || path == null) return;
+  _busy = true;
+  _error = null;
+  notifyListeners();
+
+  try {
+    final saved = await _storage.savePhoto(
+      productKey: productKey,
+      temporaryPath: path,
+    );
+
+    if (!_disposed) {
+      _savedPath = saved;
+      _previewPath = null;
+      notifyListeners();
+    }
 
     try {
-      final saved = await _storage.savePhoto(
-        productKey: productKey,
-        temporaryPath: path,
-      );
-      if (!_disposed) {
-        _savedPath = saved;
-        _previewPath = null;
-      }
+      await NotificationService.instance.showPhotoSaved();
     } catch (exception) {
-      debugPrint('Error al guardar foto: $exception');
-      if (!_disposed) _error = 'No se pudo guardar la foto. Intenta otra vez.';
-    } finally {
-      if (!_disposed) {
-        _busy = false;
-        notifyListeners();
-      }
+      debugPrint('Foto guardada; fallo de notificacion: $exception');
+    }
+  } catch (exception) {
+    debugPrint('Error al guardar foto: $exception');
+    if (!_disposed) _error = 'No se pudo guardar la foto. Intenta otra vez.';
+  } finally {
+    if (!_disposed) {
+      _busy = false;
+      notifyListeners();
     }
   }
+}
 
   @override
   void dispose() {
