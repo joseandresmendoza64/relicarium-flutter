@@ -4,6 +4,8 @@ import '../widgets/product_card.dart';
 import '../widgets/offline_banner.dart';
 import 'package:provider/provider.dart';
 import '../providers/catalog_provider.dart';
+import 'museum_screen.dart';
+
 class HomeScreen extends StatelessWidget {
 const HomeScreen({super.key});
   
@@ -51,6 +53,16 @@ const HomeScreen({super.key});
               style: TextStyle(color: Color.fromARGB(255, 101, 202, 252), fontSize: 17),
               
             ),
+const SizedBox(height: 12),
+OutlinedButton.icon(
+  onPressed: () {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => const MuseumScreen()),
+    );
+  },
+  icon: const Icon(Icons.museum_outlined),
+  label: const Text('Archivo del museo'),
+),
             const SizedBox(height: 20),
             Expanded(
               child: catalog.isLoading
