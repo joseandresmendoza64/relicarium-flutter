@@ -22,6 +22,30 @@ Este proyecto reutiliza y evoluciona **RELICARIUM, de la Actividad Integradora 1
 - Fotos copiadas al almacenamiento privado persistente de la aplicación, asociadas a cada reliquia.
 - Notificación local «Foto guardada» tras guardar correctamente una foto, con canal de Android y solicitud de autorización. Denegar notificaciones no impide guardar la imagen.
 
+## Actividad Integradora 3 — Archivo del museo
+
+Relicarium II consulta la API pública del Art Institute of Chicago para mostrar 12 armaduras históricas de dominio público. La consulta utiliza una
+petición GET sin autenticación y muestra el título, la fecha y el lugar de origen.
+
+- [Consulta usada por la app](https://api.artic.edu/api/v1/artworks/search?q=armor&limit=12&fields=id%2Ctitle%2Cdate_display%2Cplace_of_origin%2Cimage_id&query%5Bterm%5D%5Bis_public_domain%5D=true)
+- [Documentación del museo](https://api.artic.edu/docs/)
+
+`MuseumApiService` realiza la consulta con `http` y convierte los elementos de
+`data` en objetos `MuseumArtwork`. `MuseumProvider` comunica los estados de
+carga, éxito y error a la pantalla.
+
+Con un emulador Android encendido, ejecuta desde la raíz del proyecto:
+
+```sh
+flutter pub get
+flutter run
+```
+
+Abre **Archivo del museo** desde el catálogo. Desliza la lista hacia abajo para
+consultar de nuevo. Ante un error, puedes pulsar **Reintentar**. Si una imagen
+no está disponible, la tarjeta conserva los datos de la pieza y muestra un
+icono de museo.
+
 ## Requisitos
 
 Entorno utilizado: Flutter **3.47.8** con Dart **3.13.7**, Windows y emulador Android Pixel 10. El `pubspec.yaml` declara Dart `^3.13.7`; utiliza un Flutter que incluya una versión compatible.
